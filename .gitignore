@@ -1,0 +1,25 @@
+# Java / Gradle (backend)
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+*.class
+
+# Node / Vite (frontend)
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Environment files（値は環境ごとに異なるため、テンプレート(.env.example)以外はコミットしない）
+.env
+.env.*
+!.env.example
+
+# Claude Code local settings（マシン固有の設定。コマンド許可履歴などを含むため共有しない）
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/

@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: url-shortener-backend
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      # スキーマの実体はFlywayが管理する。Hibernateはentityとテーブルの整合性を検証するのみ
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+server:
+  port: 8080
+
+app:
+  # DB接続情報と異なり非機密情報なのでローカル既定値を持たせる。本番は環境変数で上書きする
+  base-url: ${APP_BASE_URL:http://localhost:8080}
+  cors:
+    # base-urlと同様、非機密値なのでローカル既定値を持たせる
+    allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
