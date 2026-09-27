@@ -45,3 +45,43 @@
   align-items: center;
   gap: 8px;
 }
+
+#app .stats {
+  width: 100%;
+  max-width: 480px;
+}
+
+#app hr {
+  width: 100%;
+  max-width: 480px;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+#app .lookup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+#app .lookup h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+#app .lookup form {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+}
+
+#app .lookup input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+}
