@@ -34,3 +34,15 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// このプロジェクトは実行可能jar（bootJar）としてのみ使う（ライブラリとして他プロジェクトから
+// 依存されることはない）ため、plain jar（依存関係を含まない実行不可のjar）は不要。
+// 無効化しないとbuild/libs/に2つのjarが生成され、Docker COPYでのファイル名解決が曖昧になる。
+jar {
+	enabled = false
+}
+
+// Dockerfile側で成果物のファイル名を固定で参照できるようにする（COPY --from=build .../app.jar）
+bootJar {
+	archiveFileName = 'app.jar'
+}
