@@ -17,11 +17,11 @@ export class ApiError extends Error {
   }
 }
 
-export async function shortenUrl(url: string): Promise<ShortenResponse> {
+export async function shortenUrl(url: string, customKey?: string): Promise<ShortenResponse> {
   const response = await fetch(`${import.meta.env.VITE_API_BASE}/api/shorten`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ url }),
+    body: JSON.stringify({ url, customKey }),
   });
 
   if (!response.ok) {

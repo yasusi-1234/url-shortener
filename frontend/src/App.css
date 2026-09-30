@@ -13,6 +13,36 @@
   max-width: 480px;
 }
 
+#app form.shorten-form {
+  flex-wrap: wrap;
+}
+
+#app .input-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+#app .custom-key-field {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+#app .custom-key-field input {
+  flex: initial;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#app .help-text {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text);
+}
+
 #app input {
   flex: 1;
   padding: 8px 12px;

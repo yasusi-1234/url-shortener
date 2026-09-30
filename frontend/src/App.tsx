@@ -6,6 +6,7 @@ import './App.css';
 
 function App() {
   const [url, setUrl] = useState('');
+  const [customKey, setCustomKey] = useState('');
   const [result, setResult] = useState<ShortenResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,7 +29,7 @@ function App() {
     setError(null);
     setIsSubmitting(true);
     try {
-      const response = await shortenUrl(trimmed);
+      const response = await shortenUrl(trimmed, customKey.trim() || undefined);
       setResult(response);
     } catch (err) {
       setError(toDisplayMessage(err));
@@ -59,17 +60,30 @@ function App() {
     <main id="app">
       <h1>URL短縮サービス</h1>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="https://example.com/very/long/path"
-          aria-label="短縮したいURL"
-        />
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? '短縮中...' : '短縮する'}
-        </button>
+      <form onSubmit={handleSubmit} className="shorten-form">
+        <div className="input-row">
+          <input
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="https://example.com/very/long/path"
+            aria-label="短縮したいURL"
+          />
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? '短縮中...' : '短縮する'}
+          </button>
+        </div>
+
+        <div className="custom-key-field">
+          <input
+            type="text"
+            value={customKey}
+            onChange={(e) => setCustomKey(e.target.value)}
+            placeholder="my-campaign"
+            aria-label="カスタム短縮キー（任意）"
+          />
+          <p className="help-text">使える文字：小文字の英字・数字・ハイフン・アンダースコア、1〜30文字</p>
+        </div>
       </form>
 
       {error && (
